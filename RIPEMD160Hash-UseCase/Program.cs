@@ -26,7 +26,6 @@ public class Program
             Console.WriteLine("Input String: " + inputString);
             Console.WriteLine("RIPEMD-160 Hash: " + BitConverter.ToString(hashValue).Replace("-", "").ToLower());
         }
-
     }
 
     static byte[] ComputeRipemd160Hash(byte[] input)
