@@ -1,19 +1,34 @@
-﻿using System.Text;
+﻿using SshNet.Security.Cryptography;
+using System.Text;
 
 public class Program
 {
     static void Main()
     {
-        // Take input from the user
-        Console.Write("Enter a string to hash: ");
-        string inputString = Console.ReadLine();
+        while(true)
+        {
+            // Take input from the user
+            Console.Write("Enter a string to hash (or type 'exit' to quit): ");
+            string inputString = Console.ReadLine();
 
-        // Convert the input string to a byte array
-        byte[] inputData = Encoding.UTF8.GetBytes(inputString);
+            if (inputString.ToLower() == "exit")
+            {
+                break; // exit
+            }
 
-        // Compute RIPEMD-160 hash - TO DO
+            // Convert the input string to a byte array
+            byte[] inputData = Encoding.UTF8.GetBytes(inputString);
+
+            // Compute RIPEMD-160 hash
+            byte[] hashValue = ComputeRipemd160Hash(inputData);
+
+            // Display the hash result
+            Console.WriteLine("Input String: " + inputString);
+            Console.WriteLine("RIPEMD-160 Hash: " + BitConverter.ToString(hashValue).Replace("-", "").ToLower());
+        }
+
     }
-    
+
     static byte[] ComputeRipemd160Hash(byte[] input)
     {
         using(RIPEMD160 ripemd160 = new RIPEMD160())
