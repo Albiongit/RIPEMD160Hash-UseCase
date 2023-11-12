@@ -13,4 +13,14 @@ public class Program
 
         // Compute RIPEMD-160 hash - TO DO
     }
+    
+    static byte[] ComputeRipemd160Hash(byte[] input)
+    {
+        using(RIPEMD160 ripemd160 = new RIPEMD160())
+        {
+            byte[] hashValue = ripemd160.ComputeHash(input);
+
+            return hashValue;
+        }
+    }
 }
