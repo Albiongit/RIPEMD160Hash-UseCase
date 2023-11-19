@@ -18,9 +18,17 @@ It strikes a balance between security and computational efficiency.
 The implementation in this repository provides a straightforward and efficient means to incorporate RIPEMD160 hashing into your projects. The included example demonstrates how to use the RIPEMD160 hashing function to secure your data.
 
 ## How It Works
-Message Padding: The input message is padded to ensure its length is a multiple of the block size.
-Processing Blocks: The padded message is processed in blocks, and each block produces an intermediate hash value.
-Chaining Intermediate Hash Values: The intermediate hash values are then combined in a specific way to produce the final hash value.
+* The Main method contains an infinite loop that repeatedly prompts the user to enter a string to be hashed.
+* If the user types "exit," the loop will break, and the program will terminate.
+* The input string is then converted to a byte array using UTF-8 encoding.
+* The ComputeRipemd160Hash method is called to compute the RIPEMD-160 hash of the byte array.
+* The original string and its corresponding RIPEMD-160 hash are then displayed.
+
+### static byte[] ComputeRipemd160Hash(byte[] input) 
+* This method takes a byte array as input and computes the RIPEMD-160 hash using the RIPEMD160 class from the SshNet.Security.Cryptography namespace.
+* The using statement is used to ensure that the RIPEMD160 instance is properly disposed of after use.
+* The computed hash is then returned as a byte array.
+
 
 ## Limitations
 While RIPEMD160 is widely used, it's important to be aware of its limitations:
